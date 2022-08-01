@@ -1,0 +1,95 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.tabellone{
+  display: grid;
+  max-width: 700px;
+  flex-basis: 100%;
+  aspect-ratio: 1;
+}
+
+.tabellone.large{
+  grid-template-columns:repeat(10,1fr);
+}
+.tabellone.medium{
+  grid-template-columns:repeat(9,1fr);
+}
+.tabellone.small{
+  grid-template-columns:repeat(7,1fr);
+}
+.tabellone.extrasmall{
+  grid-template-columns:repeat(6,1fr); 
+}
+
+.square{
+  aspect-ratio: 1;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:black;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+body{
+  background-color: rgb(112, 241, 185);
+}
+
+main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .square.clicked{
+  background-color: skyblue;
+  color: white;
+} */
+
+.options{
+  margin-bottom: 3rem;
+  margin-top: 3rem;
+  text-align: center;
+}
+.square.bomb{
+  background-color: red;
+  color: white;
+}
+.square.safe{
+  background-color: green;
+  color: white;
+}
+#difficulty-choice{
+  border-radius: 10px;
+  width: 200px;
+  text-align: center;
+  margin-right: 20px;
+  height: 30px;
+  border: 1px solid black;
+  
+  
+}
+.result{
+  display: inline;
+  margin-left: 20px;
+}
+
+#gen-button{
+  height: 30px;
+  width: 50px;
+  border: 1px solid black;
+  border-radius: 10px;
+  font-weight: 600;
+  background-color: rgb(60, 95, 225);
+  color: white;
+  cursor: pointer;
+}
+
+.gameover{
+  pointer-events: none;
+}
+
