@@ -4,6 +4,7 @@ const grigliaElement = document.querySelector('.tabellone')
 const diffChoice = document.getElementById('difficulty-choice')
 const genButton = document.getElementById('gen-button')
 const punteggioHtml = document.querySelector('.result')
+const tutteLeCell = document.getElementsByClassName('square')
 let bombArray = []
 let punteggio = 0
 let userTries
@@ -54,8 +55,7 @@ genButton.addEventListener('click', function(){
   }
 
   console.log(bombArray.sort((a, b) => a - b))
-
-  
+ 
   
 })
 
@@ -90,20 +90,15 @@ function clickHandler(){
   if (bombArray.includes(numeroCella)){
     this.classList.add('bomb')
     gameOver()
+   
   } else {
     this.classList.add('safe')
     punteggio++
-    
-    
     if ( userTries - punteggio === 0 ){
       gameWin()
     }
     punteggioHtml.innerHTML = "punteggio: " + punteggio 
   }
-  
-  
-
-
   // rendo la cella non clickabile piu' di una volta perché quando viene invocato l'addeventlistener gli levo l'event listener 
   square.removeEventListener('click', clickHandler)
   
@@ -126,15 +121,24 @@ function bombGenerator(numeroDiCaselle, bombArray){
 
 
 function gameOver(){
-  
   alert("hai perso")
   console.log("il tuo punteggio finale é " + punteggio)
   grigliaElement.classList.add('gameover')
   punteggioHtml.innerHTML = "punteggio finale: " + punteggio 
+  const celleList = document.querySelectorAll('.square')
+  for(  let i = 0; i < celleList.length; i ++){
+    const  cellaCorrente = celleList[i]
+    if(isBomb(cellaCorrente)){
+      cellaCorrente.classList.add('bomb')
+    }
+  }
+ 
+  
+  
+  
   
   
 }
-
 function gameWin(){
   alert("hai vinto")
   grigliaElement.classList.add('gameover')
@@ -150,3 +154,14 @@ function gameReset(){
     bombArray = []
     punteggioHtml.innerHTML = 'punteggio: '
 }
+ function isBomb(cella){
+  const numeroCella = parseInt(cella.innerHTML)
+    if(bombArray.includes(numeroCella)){
+      return true
+    }
+
+  
+
+  }
+ 
+  
